@@ -1,0 +1,29 @@
+
+.Grid {
+  display: flex;
+  margin-top: 10px;
+}
+
+.Grid-cell {
+  flex: 1;
+  background: #999;
+}
+
+.Grid-cell.u-full {
+  flex: 0 0 100%;
+}
+
+.Grid-cell.u-1of2 {
+  flex: 0 0 50%;
+  background-color: green;
+}
+
+.Grid-cell.u-1of3 {
+  flex: 0 0 33.3333%;
+  background-color: blue;
+}
+
+.Grid-cell.u-1of4 {
+  flex: 0 0 25%;
+  background-color: red;
+}

@@ -1,0 +1,36 @@
+
+/*以百分比来规定改变发生的时间，或者通过关键词 "from" 和 "to"，等价于 0% 和 100%。*/
+div{
+  width:100px;
+  height:100px;
+  background:red;
+  position:relative;
+  animation:mymove 5s infinite;
+  -moz-animation:mymove 5s infinite; /* Firefox */
+  -webkit-animation:mymove 5s infinite; /* Safari and Chrome */
+  -o-animation:mymove 5s infinite; /* Opera */
+  }
+
+@keyframes mymove{
+  0%   {top:0px;}
+  25%  {top:200px;}
+  75%  {top:50px;}
+  100% {top:100px;}
+}
+
+@-moz-keyframes mymove{ /* Firefox */
+  from {top:0px;}
+  to {top:200px;}
+}
+
+@-webkit-keyframes mymove {/* Safari and Chrome */
+  0%   {top:0px;}
+  25%  {top:200px;}
+  75%  {top:50px; }
+  100% {top:100px;}
+}
+
+@-o-keyframes mymove {/* Opera */
+  from {top:0px;}
+  to {top:200px;}
+}
