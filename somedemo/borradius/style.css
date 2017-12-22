@@ -1,0 +1,22 @@
+*{
+  margin:0;
+  padding: 0;
+}
+.box{
+  text-align: center;
+}
+.box ul{
+  display: inline-block;
+}
+
+.border{
+  background-color: #0c316a;
+  border: 2px solid #a7c1ea;
+  border-radius: 36px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  display: block;
+  behavior: url(PIE.htc);
+}
