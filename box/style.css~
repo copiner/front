@@ -1,0 +1,20 @@
+.parent{
+    width:500px;
+    padding:10px;
+    background:grey;
+}
+.lefter{
+    width:200px;
+    height:150px;
+    background-color:#ccc;
+    float:left;
+}
+.righter{
+    width:200px;
+    height:150px;
+    background-color:#ccc;    
+    float:right;
+}
+.clear{
+    clear:both;
+}
