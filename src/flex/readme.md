@@ -1,12 +1,12 @@
-布局的传统解决方案，基于盒状模型，
-依赖 display 属性 + position属性 + float属性
+锟斤拷锟街的达拷统锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟节猴拷状模锟酵ｏ拷
+锟斤拷锟斤拷 display 锟斤拷锟斤拷 + position锟斤拷锟斤拷 + float锟斤拷锟斤拷
 
 
 
 
 ### flex container
 
-#### main 、 cross
+#### main 锟斤拷 cross
 ```
 flex-direction: row | row-reverse | column | column-reverse;
 
