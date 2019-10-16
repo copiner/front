@@ -1,5 +1,3 @@
-/* Written by wdaonngg@gmail.com in 2019-08-09*/
-
 const { src, dest, task, series, parallel, watch, lastRun } = require('gulp');
 
 const cleanCSS = require('gulp-clean-css');
