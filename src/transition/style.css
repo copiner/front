@@ -58,3 +58,22 @@
   -webkit-animation-delay: 0.8s;
   animation-delay: 0.8s;
 }
+
+
+.spot{
+  margin: 100px auto;
+  text-align: center;
+}
+.spot .a{
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  transform-origin: center 400px;
+  transition: transform .7s ease;
+  }
+.spot .a{
+  background-color: #000;
+}
+.spot:hover .a{
+  transform: rotate(-25deg);
+}
