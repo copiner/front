@@ -2,13 +2,35 @@
 const { src, dest, task, series, parallel, watch, lastRun } = require('gulp');
 const connect = require('gulp-connect');
 const del = require('del');
+const sass = require('gulp-sass');
 
-task('source', function (cb) {
+task('rem', function (cb) {
+  src('src/mobile/rem/scss/*.scss')
+  .pipe(sass().on('error', sass.logError))
+  .pipe(dest('dist/mobile/rem/css/'))
+  cb();
+});
+
+task('vw', function (cb) {
+  src('src/mobile/vw/scss/*.scss')
+  .pipe(sass().on('error', sass.logError))
+  .pipe(dest('dist/mobile/vw/css/'))
+  cb();
+});
+
+task('vwrem', function (cb) {
+  src('src/mobile/vwrem/scss/*.scss')
+  .pipe(sass().on('error', sass.logError))
+  .pipe(dest('dist/mobile/vwrem/css/'))
+  cb();
+});
+
+task('source', series('vw','rem','vwrem', function (cb) {
     src('src/**/*')
     .pipe(dest('dist/'))
     .pipe(connect.reload());
     cb();
-});
+}));
 
 task('watch', function(cb){//监控
 
@@ -62,7 +84,7 @@ task('clean', () => {
 task('server',series('clean','watch','source',function(){
     connect.server({
         root: 'dist',
-        host:'localhost',
+        host:'192.168.1.77',
         port: 3000,
         livereload: true
     });
