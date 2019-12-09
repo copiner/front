@@ -54,6 +54,34 @@ $max-device-width: 540px;
     @return #{$rem / $blocks * $design-width}px;
 }
 
+/* 设置容器拉伸的最小宽度 */
+@mixin container-min-width() {
+    margin-right: auto;
+    margin-left: auto;
+    min-width: $min-device-width;
+}
+
+/* 设置容器拉伸的最大宽度 */
+@mixin container-max-width() {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: $max-device-width;
+}
+
+/* 设置字体大小，不使用rem单位， 根据dpr值分段调整 */
+@mixin font-size($fontSize) {
+    font-size: $fontSize / $design-dpr;
+
+    [data-dpr="2"] & {
+        font-size: $fontSize / $design-dpr * 2;
+    }
+
+    [data-dpr="3"] & {
+        font-size: $fontSize / $design-dpr * 3;
+    }
+}
+
+
 /**
  * 实现固定宽高比
  * @param  {string} $position: relative      定位方式
@@ -85,32 +113,5 @@ $max-device-width: 540px;
         top: 0;
         width: 100%;
         height: 100%;
-    }
-}
-
-/* 设置容器拉伸的最小宽度 */
-@mixin container-min-width() {
-    margin-right: auto;
-    margin-left: auto;
-    min-width: $min-device-width;
-}
-
-/* 设置容器拉伸的最大宽度 */
-@mixin container-max-width() {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: $max-device-width;
-}
-
-/* 设置字体大小，不使用rem单位， 根据dpr值分段调整 */
-@mixin font-size($fontSize) {
-    font-size: $fontSize / $design-dpr;
-
-    [data-dpr="2"] & {
-        font-size: $fontSize / $design-dpr * 2;
-    }
-
-    [data-dpr="3"] & {
-        font-size: $fontSize / $design-dpr * 3;
     }
 }
