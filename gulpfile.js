@@ -25,7 +25,14 @@ task('vwrem', function (cb) {
   cb();
 });
 
-task('source', series('vw','rem','vwrem', function (cb) {
+task('mi', function (cb) {
+  src('src/mobile/mi/scss/*.scss')
+  .pipe(sass().on('error', sass.logError))
+  .pipe(dest('dist/mobile/mi/css/'))
+  cb();
+});
+
+task('source', series('vw','rem','vwrem','mi', function (cb) {
     src('src/**/*')
     .pipe(dest('dist/'))
     .pipe(connect.reload());

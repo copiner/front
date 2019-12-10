@@ -24,7 +24,13 @@ $max-device-width: 540px;
     font-size: 100vw / $blocks;
 
     body {
-        @include container-min-width();
+        // @include container-min-width();
+
+        //1209
+        margin-right: auto;
+        margin-left: auto;
+        min-width: $min-device-width;
+        max-width: $max-device-width;
     }
 
     /* 最小宽度定义 */
@@ -32,16 +38,21 @@ $max-device-width: 540px;
         font-size: $min-device-width / $blocks;
     }
 
-    /* 最大宽度定义 */
-    &[data-content-max] {
-        body[data-content-max] {
-            @include container-max-width();
-        }
-
-        @media screen and (min-width: $max-device-width) {
-            font-size: $max-device-width / $blocks;
-        }
+    /* 1209最大宽度定义 */
+    @media screen and (min-width: $max-device-width) {
+        font-size: $max-device-width / $blocks;
     }
+
+    /* 最大宽度定义 */
+    // &[data-content-max] {
+    //     body[data-content-max] {
+    //         @include container-max-width();
+    //     }
+    //
+    //     @media screen and (min-width: $max-device-width) {
+    //         font-size: $max-device-width / $blocks;
+    //     }
+    // }
 }
 
 /* 单位px转化为rem */
