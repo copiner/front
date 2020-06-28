@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>inline</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width:800px;
+            border: 1px solid #ccc;
+        }
+        .box{
+            width: 400px;
+            height: 100px;
+            margin: 10px 20px;
+            border: 1px solid #ccc;
+            font-size: 0;
+        }
+        .half {
+            height:40px;
+            display: inline-block;
+            width: 50%;
+           /* vertical-align: bottom; */
+           font-size: 16px;
+       }
+       .left{
+           background-color: #8ab3bf;
+       }
+       .right{
+           background-color: #C1CD89;
+       }
+    </style>
+</head>
+<body>
+
+  <!-- inline-block加了文字后，产生了对齐不一致的问题 -->
+
+<!-- Vertical-align。通常来说使用这个属性进行布局是一种hack行为，因为它本来并不是被用于这个目的。它用在文本和与文本相邻元素的垂直方向上的对齐问题 -->
+
+  <!-- 换行的原因在于div与div换行制表符产生的空隙，所以要避免换行的话，
+  那就让div和div挨着一起不要换行，或者设置容器font-size为0，因为制表符的大小受font-size影响 -->
+<div class="container">
+    <div  class="box">
+        <div class="half left">50% wide</div>
+        <div class="half right">50% wide... and in next line</div>
+    </div>
+    <div class="box">
+        <div class="half left">50% wide</div>
+        <div class="half right">50% wide abc</div>
+    </div>
+
+    <div class="box">
+        <div class="half left">50% wide</div><div class="half right">50% wide</div>
+    </div>
+
+    <div class="box">
+        <div class="half left">
+          left
+        </div>
+        <!---->
+        <div class="half right">
+          right
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>before-after</title>
+  <style type="text/css">
+    .ba:before{
+      content: "hello";
+      display: block;
+      width: 200px;
+    }
+    .ba:after{
+      content: "you are handsome!"
+    }
+    .tips:before{
+      content: attr(data-msg)
+    }
+  </style>
+</head>
+<body>
+<p class="ba">tink!</p>
+<p data-msg="welfare" class="tips">--------</p>
+<!-- attr() 理论上能用于所有的CSS属性但目前支持的仅有伪元素的 content 属性，
+其他的属性和高级特性目前是实验性的attr() 理论上能用于所有的CSS属性但目前支持的仅有伪元素的 content 属性，
+其他的属性和高级特性目前是实验性的 -->
+<div>
+  <span>hello </span>
+  tink!
+  <span>you are handsome!</span>
+</div>
+</body>
+</html>

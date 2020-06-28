@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>inline</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .box{
+          background-color: #ccc;
+          border: 1px solid #999;
+        }
+
+        .icon   { display: inline-block;
+                  /* size, color, etc. */ }
+
+        .middle { vertical-align: middle; }
+
+
+        .tall-box,
+        .short-box   { display: inline-block;
+                      /* size, color, etc. */ }
+
+        .text-bottom { vertical-align: text-bottom; }
+        .text-top    { vertical-align: text-top; }
+
+        .box2{
+          border: 1px solid red;
+        }
+
+        .box3{
+          font-size: 0;
+        }
+        .box3 li{
+          font-size: 16px;
+          display: inline-block;
+          border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+  <!-- baseline的移动问题 -->
+<div>
+  <div class="box">
+    <span class="icon"><img src="./a.png" /></span>
+    <span>奥迪</span>
+  </div>
+  <div class="box">
+    <span class="icon middle"><img src="./a.png" /></span>
+    <span>奔驰</span>
+  </div>
+</div>
+
+<div class="box2">
+  <!-- left mark-up -->
+  <span class="tall-box text-bottom">a</span>
+  <span class="short-box">b</span>
+
+  <!-- right mark-up -->
+  <span class="tall-box text-top">c</span>
+  <span class="short-box">d</span>
+</div>
+
+<div class="box3">
+  <ul>
+    <li class="middle">1</li>
+    <li class="middle">2</li>
+    <li class="middle">3</li>
+  </ul>
+
+</div>
+
+</body>
+</html>
