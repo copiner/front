@@ -1,0 +1,70 @@
+*{
+  margin:0;
+  padding: 0;
+}
+
+.box{
+  width: 100px;
+  height: 100px;
+  background: lightblue;
+  margin: 100px;
+}
+
+.container {
+    overflow: hidden;
+}
+.container p {
+    width: 100px;
+    height: 100px;
+    background: lightblue;
+    margin: 100px;
+}
+.tech{
+  border: 1px solid #000;
+  overflow: hidden;
+}
+.piao{
+  width: 100px;
+  height: 100px;
+  background: #eee;
+  float: left;
+}
+
+.line{
+  clear: both;
+  border: 1px solid red;
+}
+
+
+.around{
+  height: 100px;
+  width: 100px;
+  float: left;
+  background: lightblue;
+}
+.text{
+  width: 200px;
+  height: 200px;
+  background: #eee;
+  overflow: hidden;
+}
+
+
+.left{
+    width: 100px;
+    height: 150px;
+    float: left;
+    background: rgb(139, 214, 78);
+    text-align: center;
+    line-height: 150px;
+    font-size: 20px;
+}
+
+.right {
+    overflow: hidden;
+    height: 300px;
+    background: rgb(170, 54, 236);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+}
