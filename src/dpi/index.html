@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8" />
+<title>resolution</title>
+<meta name="dpi" content="dpi" />
+  <style>
+  @media screen and (min-resolution: 192dpi) {
+  	.normal{display:none;}
+  }
+  @media screen and (min-resolution: 72dpi) and (max-resolution: 191dpi) {
+  	.retina{display:none;}
+  }
+  </style>
+</head>
+<body>
+<p class="retina">视网膜屏</p>
+<p class="normal">普通屏</p>
+<p>
+  -webkit-device-pixel-ratio 是一个非标准的布尔类型CSS媒体类型，是标准 resolution 媒体类型的一个替代方案.
+</p>
+</body>
+</html>
