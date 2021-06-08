@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=" utf-8">
+<meta name="author" />
+<title>getComputedStyle</title>
+<script type="text/javascript">
+/*
+href是Hypertext Reference的缩写，表示超文本引用。用来建立当前元素和文档之间的链接。常用的有：link、a。
+在请求 src 资源时会将其指向的资源下载并应用到文档中，常用的有script，img；
+href 用于在当前文档和引用资源之间确立联系；src 用于替换当前内
+*/
+
+</script>
+<script type="text/javascript" src="./jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./main.css">
+<style type="text/css">
+div{
+    width:100px;
+    height:100px;
+    margin-top:20px;
+}
+#first{
+  background-color:red
+}
+</style>
+<script type="text/javascript">
+/*
+在Jquery中$(function(){ })和$(document).ready(function(){ })的效果是一样，
+是在DOM树加载完成之后（DOM树加载完不代表全部资源加载完，例如图片，音频和视频等还没加载）就会执行。
+所以$(document).ready(function(){ })是比window.onload要先执行的
+*/
+$(function(){
+  console.log('first')
+})
+
+window.onload=function(){
+  var log = console.log;
+
+  var first=document.getElementById("first");
+  var second=document.getElementById("second");
+  log(first.style.backgroundColor);
+  log(second.style.backgroundColor);
+}
+
+</script>
+</head>
+<body>
+<div id="first"></div>
+<div id="second" style="background-color:blue"></div>
+</body>
+</html>

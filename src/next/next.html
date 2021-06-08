@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=" utf-8">
+<title>NEXTCSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="./main.css">
+
+<script type="text/javascript">
+window.onload=function(){
+  let first=document.getElementById("first");
+  first.style.setProperty('--primary-color', 'red');
+
+
+  const styles1 = getComputedStyle(first);
+  const value1 = String(styles1.getPropertyValue('--primary-color')).trim();
+
+  console.log(value1)
+  /*
+  This code below can be used to access a variable value instead,
+  in case the variable is defined on :root:
+  */
+  const styles = getComputedStyle(document.documentElement);
+  document.documentElement.style.setProperty('--btn-color', 'red');
+  const value = String(styles.getPropertyValue('--primary-color')).trim();
+
+  console.log(value)
+
+}
+</script>
+</head>
+<body>
+
+<div id="first">
+  NEXT
+</div>
+<div id="second">
+  NEXT
+</div>
+<button type="button" name="button" class="btn">ABC</button>
+</body>
+</html>

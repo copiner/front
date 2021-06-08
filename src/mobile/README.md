@@ -23,3 +23,12 @@
 5. 弹性布局
 
 通常指的是rem或em布局。rem是相对于html元素的font-size大小而言的，而em是相对于其父元素（非font-size的是相对于自身的font-size）
+
+
+rem布局 设计稿750px
+```
+var _winWidth = document.documentElement.clientWidth || window.innerWidth,
+    _style = document.getElementsByTagName("html")[0].style;
+_winWidth >= 750 ? _style.fontSize = "100px" : _style.fontSize = _winWidth / 7.5 + "px";
+
+```

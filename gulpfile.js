@@ -2,7 +2,7 @@
 const { src, dest, task, series, parallel, watch, lastRun } = require('gulp');
 const connect = require('gulp-connect');
 const del = require('del');
-const sass = require('gulp-sass');
+// const sass = require('gulp-sass');
 
 task('rem', function (cb) {
   src('src/mobile/rem/scss/*.scss')
@@ -32,12 +32,19 @@ task('mi', function (cb) {
   cb();
 });
 
-task('source', series('vw','rem','vwrem','mi', function (cb) {
+// task('source', series('vw','rem','vwrem','mi', function (cb) {
+//     src('src/**/*')
+//     .pipe(dest('dist/'))
+//     .pipe(connect.reload());
+//     cb();
+// }));
+
+task('source', function (cb) {
     src('src/**/*')
     .pipe(dest('dist/'))
     .pipe(connect.reload());
     cb();
-}));
+});
 
 task('watch', function(cb){//监控
 
@@ -91,7 +98,7 @@ task('clean', () => {
 task('server',series('clean','watch','source',function(){
     connect.server({
         root: 'dist',
-        host:'192.168.1.77',
+        host:'127.0.0.1',
         port: 3000,
         livereload: true
     });

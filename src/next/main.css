@@ -1,0 +1,40 @@
+*{
+  padding:0;
+  margin:0;
+}
+
+
+
+:root {
+  --primary-color: blue;
+  --default-left-padding: calc(10px * 2);
+}
+
+#first{
+  color: var(--primary-color);
+}
+
+#second{
+  color: var(--primary-color);
+}
+
+.btn{
+  color:var(--btn-color);
+  padding-left:var(--default-left-padding);
+  margin-top: var(--default-margin, 30px);
+}
+
+
+
+@media screen and (max-width: 1280px) and (min-width: 768px){
+
+  body {
+    --bg-color: #65C294;
+  }
+
+}
+
+body{
+  background-color: var(--bg-color);
+  border: 1px solid red;
+}
