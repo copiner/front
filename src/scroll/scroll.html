@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=" utf-8">
+<title>SCROLL</title>
+<style type="text/css">
+  body{
+    width:100px;
+    height:1080px;
+    border:1px solid #888;
+  }
+</style>
+<script type="text/javascript">
+
+window.onscroll = function() {
+  var log = console.log
+  //log(window.pageYOffset,document.documentElement.scrollTop)
+  log(window.innerHeight,document.documentElement.clientHeight)
+	// 文档内容实际高度（包括超出视窗的溢出部分）
+	var scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+	//log(document.body.scrollHeight, document.documentElement.scrollHeight)
+	//滚动条滚动距离
+	var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+	//log(scrollTop)
+	//窗口可视范围高度
+	var clientHeight = window.innerHeight || Math.min(document.documentElement.clientHeight, document.body.clientHeight);
+	//console.log(clientHeight)
+
+	if (clientHeight + scrollTop >= scrollHeight) {
+    log("bottom")
+  }
+}
+
+</script>
+</head>
+<body>
+<div id="div" style="width:100px;height:100px;background:#888;position:absolute;">
+</div>
+</body>
+</html>

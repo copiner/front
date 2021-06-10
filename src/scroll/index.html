@@ -3,7 +3,13 @@
 <head>
 <meta charset=" utf-8">
 <title>SCROLL</title>
-
+<style type="text/css">
+  body{
+    width:100px;
+    height:1080px;
+    border:1px solid #ccc;
+  }
+</style>
 <script type="text/javascript">
 /*
 Javascript:
@@ -40,9 +46,31 @@ alert($(document.body).outerWidth(true));//浏览器当前窗口文档body的总
 })
 
 */
+window.onscroll = function (){
+  var div = document.getElementById("div");
+
+  var scrollTop = window.pageYOffset  //用于FF
+                  || document.documentElement.scrollTop
+                  || document.body.scrollTop
+                  || 0;
+
+  div.style.top = scrollTop + "px";
+  //div.style.top = document.documentElement.scrollTop + "px";
+  console.log(document.body.scrollTop);
+  console.log(scrollTop)
+}
+
+/*
+var scrollTop = window.pageYOffset  //用于FF
+                || document.documentElement.scrollTop
+                || document.body.scrollTop
+                || 0;
+*/
+
 </script>
 </head>
 <body>
-
+<div id="div" style="width:100px;height:100px;background:#ccc;position:absolute;">
+</div>
 </body>
 </html>
