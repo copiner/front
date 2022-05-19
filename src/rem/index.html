@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>VW布局</title>
+        <title>REM布局</title>
         <meta charset="utf-8">
         <meta lang="zh-CN">
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-        <link rel="stylesheet" href="./css/mi.css">
+        <link rel="stylesheet" href="./rem.css">
+        <script>
+          const docEl = document.documentElement;
+          const viewWidth = docEl.clientWidth;
+          docEl.style.fontSize = `${viewWidth/75}px`;
+        </script>
     </head>
 
     <body>
