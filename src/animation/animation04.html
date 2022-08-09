@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .view{
+      display: block;
+      height: 200px;
+      width: 400px;
+      border: 1px solid black;
+      overflow: hidden;
+    }
+    .page{
+      animation: dot linear 3s infinite;
+      height: auto;
+      padding: 10px;
+      color: white;
+      box-sizing: border-box;
+      background-image: linear-gradient(red,blue);width: 100%;
+    }
+    @keyframes dot {
+      0%{
+        transform: translateY(0);
+      }100%{
+         transform: translateY(-100%);
+       }
+
+    }
+  </style>
+</head>
+<body>
+<div class="view">
+  <div class="page" style="">
+    <h1>hello-word111</h1>
+    <h1>hello-word222</h1>
+    <h1>hello-word333</h1>
+    <h1>hello-word444</h1>
+    <h1>hello-word555</h1>
+  </div>
+  <div class="page" style="">
+    <h1>hello-word011</h1>
+    <h1>hello-word022</h1>
+    <h1>hello-word033</h1>
+    <h1>hello-word044</h1>
+    <h1>hello-word055</h1>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+/*最大的盒子*/
+.find-right {
+    position: relative;
+    width: 500px;
+    height: 400px;
+    background-color: #fff;
+    overflow: hidden;
+    background-color: #CCCCCC;
+}
+/*装内容的父盒子*/
+.auto {
+    padding: 30px 0;
+    width: 3000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: ani 30s linear infinite;
+    border: 1px solid red;
+}
+
+.auto .autos {
+    width: 1500px;
+    float: left;
+}
+
+.auto a {
+    display: inline-block;
+    width: 150px;
+    height: 200px;
+    margin-right: 30px;
+    border: 1px solid red;
+}
+
+.auto a p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 20px 5px;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+}
+
+.auto a img {
+    width: 100%;
+}
+
+/* 定义动画 */
+@keyframes ani {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-1200px);
+    }
+}
+</style>
+</head>
+<body>
+<div class="find-right">
+    <div class="auto">
+        <div class="autos">
+            <a href="javascript:;">
+                <p>万代 1拼插 模型</p>
+                <img src="imgs/peo.png" alt="">
+            </a>
+            <a href="javascript:;">
+                <img src="imgs/net.png" alt="">
+                <p>鱼官儿 美丽易饲养 红樱桃灯</p>
+            </a>
+            <a href="javascript:;">
+                <p>小牛 G0 小巧紧凑 电动车</p>
+                <img src="imgs/peo.png" alt="">
+            </a>
+            <a href="javascript:;">
+                <img src="imgs/net.png" alt="">
+                <p>DURGOD 三模 机械键盘</p>
+            </a>
+            <a href="javascript:;">
+                <img src="imgs/net.png" alt="">
+                <p>安德玛 刺绣logo 运动帽</p>
+            </a>
+            <a href="javascript:;">
+                <p>海飞丝 干性去屑 洗护套装</p>
+                <img src="imgs/peo.png" alt="">
+            </a>
+
+        </div>
+        <!--复制的内容-->
+        <div class="autos">
+            <a href="javascript:;">
+                <p>万代 拼插 模型</p>
+                <img src="imgs/peo.png" alt="">
+            </a>
+            <a href="javascript:;">
+                <img src="imgs/net.png" alt="">
+                <p>鱼官儿 美丽易饲养 红樱桃灯</p>
+            </a>
+            <a href="javascript:;">
+                <p>小牛 G0 小巧紧凑 电动车</p>
+                <img src="imgs/peo.png" alt="">
+            </a>
+            <a href="javascript:;">
+                <img src="imgs/net.png" alt="">
+                <p>DURGOD 三模 机械键盘</p>
+            </a>
+            <a href="javascript:;">
+                <img src="imgs/net.png" alt="">
+                <p>安德玛 刺绣logo 运动帽</p>
+            </a>
+            <a href="javascript:;">
+                <p>海飞丝 干性去屑 洗护套装</p>
+                <img src="imgs/peo.png" alt="">
+            </a>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
