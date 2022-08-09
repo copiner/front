@@ -9,62 +9,133 @@
 }
 /* box */
 .box{
-  height: 100px;
-  border:1px solid red;
+  margin: 100px;
+  width: 600px;
+  height: 200px;
+  border: 1px solid red;
   font-size: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+.box::-webkit-scrollbar{
+  display:none
 }
 
-.box>div{
-  width:100px;
-  height:100px;
+.item{
+  width:200px;
+  height:200px;
+  line-height: 200px;
   display: inline-block;
   font-weight: bold;
   font-size: 16px;
   text-align: center;
-  /* animation: 10s boxloop linear infinite normal; */
+  position: absolute;
 }
+
 .box .a{
   background-color: #99AA99;
+  left: 0px;
 }
 .box .b{
   background-color: #CCCCCC;
+  left:200px;
 }
 .box .c{
   background-color: #BBBBBB;
+  left: 400px;
 }
 .box .d{
   background-color: #EFAAAA;
+  left: 600px;
 }
 .box .e{
   background-color: #00AABB;
+  left: 800px;
 }
 
-
-@keyframes boxloop {
-    0% {
-        transform: translateX(-100px);
-        -webkit-transform: translateX(-100px);
-    }
-    50% {
-        transform: translateX(-300px);
-        -webkit-transform: translateX(-300px);
-    }
-    100% {
-        transform: translateX(-500px);
-        -webkit-transform: translateX(-500px);
-    }
-
-}
 
 </style>
 </head>
 <body>
-  <div class="box">
-    <div class="a">1</div>
-    <div class="b">2</div>
-    <div class="c">3</div>
-    <div class="d">4</div>
-    <div class="e">5</div>
-  <div>
+<div class="box">
+  <div class="item a">1</div>
+  <div class="item b">2</div>
+  <div class="item c">3</div>
+  <div class="item d">4</div>
+  <div class="item e">5</div>
+<div>
+<script>
+let sBox = document.querySelector(".box");
+let iBox = document.querySelector(".item");
+
+let addTransition = function () {
+    iBox.style.transition = 'all 1s ease';
+    iBox.style.webkitTransition = 'all 1s ease';
+}
+let removeTransition = function () {
+    sBox.style.transition = 'none';
+    sBox.style.webkitTransition = 'none';
+}
+let setTranslateX = function (translateX) {
+    sBox.style.transform = 'translateX(' + translateX + 'px)';
+    sBox.style.webkitTransform = 'translateX(' + translateX + 'px)';
+}
+/*定时器*/
+let timer = setInterval(function () {
+
+}, 5000);
+
+
+/*绑定事件*/
+let startX = 0;
+let distanceX = 0;
+sBox.addEventListener('touchstart', function (e) {
+    /*清除定时器*/
+    clearInterval(timer);
+    /*记录起始位置的X坐标*/
+    startX = e.touches[0].clientX;
+    distanceX = 0;
+
+});
+sBox.addEventListener('touchmove', function (e) {
+    /*记录滑动过程当中的X坐标*/
+    addTransition()
+    clearInterval(timer);
+    let moveX = e.touches[0].clientX;
+    distanceX = moveX - startX;
+
+});
+sBox.addEventListener('touchend', function (e) {
+    if (distanceX > 0) { /*右滑动 上一张*/
+      sBox.querySelector(".a").style.left = '200px'
+      sBox.querySelector(".b").style.left = '400px'
+      sBox.querySelector(".c").style.left = '600px'
+      sBox.querySelector(".d").style.left = '800px'
+      sBox.querySelector(".e").style.left = '0px'
+    } else {    /*左滑动 下一张*/
+      sBox.querySelector(".a").style.left = '0px'
+      sBox.querySelector(".b").style.left = '200px'
+      sBox.querySelector(".c").style.left = '400px'
+      sBox.querySelector(".d").style.left = '600px'
+      sBox.querySelector(".e").style.left = '800px'
+    }
+
+    /*定时器*/
+    timer = setInterval(function () {
+
+    }, 5000);
+
+});
+
+function init() {
+  sBox.querySelector(".a").style.left = '0px'
+  sBox.querySelector(".b").style.left = '200px'
+  sBox.querySelector(".c").style.left = '400px'
+  sBox.querySelector(".d").style.left = '600px'
+  sBox.querySelector(".e").style.left = '800px'
+}
+init()
+</script>
 </body>
 </html>
