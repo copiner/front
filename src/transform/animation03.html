@@ -65,13 +65,17 @@
   <div class="item d">4</div>
   <div class="item e">5</div>
 <div>
+    
 <script>
 let sBox = document.querySelector(".box");
-let iBox = document.querySelector(".item");
+let iBox = document.querySelectorAll(".item");
 
 let addTransition = function () {
-    iBox.style.transition = 'all 1s ease';
-    iBox.style.webkitTransition = 'all 1s ease';
+    
+    for(let i=0; i<iBox.length; i++){
+        iBox[i].style.transition = 'all 1s ease-in';
+        iBox[i].style.webkitTransition = 'all 1s ease-in';
+    }
 }
 let removeTransition = function () {
     sBox.style.transition = 'none';
@@ -92,6 +96,7 @@ let startX = 0;
 let distanceX = 0;
 sBox.addEventListener('touchstart', function (e) {
     /*清除定时器*/
+    addTransition()    
     clearInterval(timer);
     /*记录起始位置的X坐标*/
     startX = e.touches[0].clientX;
@@ -100,7 +105,6 @@ sBox.addEventListener('touchstart', function (e) {
 });
 sBox.addEventListener('touchmove', function (e) {
     /*记录滑动过程当中的X坐标*/
-    addTransition()
     clearInterval(timer);
     let moveX = e.touches[0].clientX;
     distanceX = moveX - startX;

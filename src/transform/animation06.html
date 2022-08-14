@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+.swiper{
+    border:1px solid blue;
+    display: flex;
+    flex-direction:row;
+    width:300px;
+    margin-left: 500px;
+}
+/* box */
+.prebox{
+
+}
+.nextbox{
+
+
+}
+.curbox{
+
+
+}
+
+.box{
+    width: 300px;
+    heigth: 100px;    
+    display: flex;
+}
+.box::-webkit-scrollbar{
+  display:none
+}
+
+.item{
+  width:100px;
+  height:100px;
+  line-height: 100px;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+
+.a{
+  background-color: #99AA99;
+}
+.b{
+  background-color: #CCCCCC;
+}
+.c{
+  background-color: #BBBBBB;
+}
+
+
+</style>
+</head>
+<body>
+<div class="swiper">
+<div class="prebox box">
+      <div class="item a">a1</div>
+      <div class="item b">a2</div>
+      <div class="item c">a3</div>
+</div>
+<div class="curbox box">
+  <div class="item a">1</div>
+  <div class="item b">2</div>
+  <div class="item c">3</div>
+</div>
+<div class="nextbox box">
+  <div class="item a">b1</div>
+  <div class="item b">b2</div>
+  <div class="item c">b3</div>
+</div>
+</div>
+      
+<script>
+  let swiperBox = document.querySelector(".swiper");
+  let preBox = document.querySelector(".prebox");  
+  let sBox = document.querySelector(".curbox");
+  let nextBox = document.querySelector(".nextbox");  
+let iBox = document.querySelectorAll(".item");
+
+let addTransition = function () {
+
+        preBox.style.transition = 'all 1s ease-in';
+        preBox.style.webkitTransition = 'all 1s ease-in';
+
+            sBox.style.transition = 'all 1s ease-in';
+        sBox.style.webkitTransition = 'all 1s ease-in';
+
+           nextBox.style.transition = 'all 1s ease-in';
+        nextBox.style.webkitTransition = 'all 1s ease-in';
+
+
+}
+let removeTransition = function () {
+    sBox.style.transition = 'none';
+    sBox.style.webkitTransition = 'none';
+}
+let setTranslateX = function (translateX) {
+    sBox.style.transform = 'translateX(' + translateX + 'px)';
+    sBox.style.webkitTransform = 'translateX(' + translateX + 'px)';
+
+    preBox.style.transform = 'translateX(' + translateX + 'px)';
+    preBox.style.webkitTransform = 'translateX(' + translateX + 'px)';
+
+    nextBox.style.transform = 'translateX(' + translateX + 'px)';
+    nextBox.style.webkitTransform = 'translateX(' + translateX + 'px)';
+}
+/*定时器*/
+let timer = setInterval(function () {
+
+}, 5000);
+
+
+  /*绑定事件*/
+let index = 0;
+let startX = 0;
+let distanceX = 0;
+sBox.addEventListener('touchstart', function (e) {
+    /*清除定时器*/
+    addTransition()    
+    clearInterval(timer);
+    /*记录起始位置的X坐标*/
+    startX = e.touches[0].clientX;
+    distanceX = 0;
+
+});
+sBox.addEventListener('touchmove', function (e) {
+    /*记录滑动过程当中的X坐标*/
+    clearInterval(timer);
+    let moveX = e.touches[0].clientX;
+    distanceX = moveX - startX;
+
+});
+sBox.addEventListener('touchend', function (e) {
+    console.log(distanceX, index)
+    if(distanceX > 0){
+        index++;
+        if(Math.abs(index) > 1){
+            swiperBox.prepend(sBox)
+        }
+
+    } else {
+        index--;
+        if(Math.abs(index) > 1){
+            //removeTransition()
+            swiperBox.append(sBox)
+        }
+        
+    }
+    setTranslateX(100*index)
+
+    /*定时器*/
+    timer = setInterval(function () {
+
+//        setTranslateX(200)
+    }, 5000);
+
+});
+
+</script>
+</body>
+</html>
