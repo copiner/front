@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<style type="text/css">
+
+div{
+  position: relative;
+  margin-top: 20px;
+}
+
+/*查看注释，有无，对比效果*/
+
+label {
+  border:1px dotted red;
+	width: 60px;
+	height: 34px;
+  display: inline-block;
+  /*z-index: -1;*/
+
+	/*-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);*/
+}
+
+label:before {
+	content: '❯';
+  border: 1px solid blue;
+	font-size: 24px;
+	color: #e6e6e6;
+	/*padding: 10px 28px;*/
+}
+
+
+</style>
+</head>
+<body>
+  <div>
+    <label></label>
+  </div>
+</body>
+</html>

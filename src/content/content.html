@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<style type="text/css">
+.top{
+  position: relative;
+  border:1px solid green;
+}
+.toggle-all {
+	text-align: center;
+  opacity: .3;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-all + label {
+  border:1px solid red;
+	width: 60px;
+	height: 34px;
+  display: inline-block;
+  position: absolute;
+  left: 2px;
+  top: 10px;
+  z-index: -1;
+	font-size: 0;
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+/*label:after {
+	content: '❯';
+  border:1px solid red;
+	font-size: 22px;
+	color: #e6e6e6;
+	padding: 10px 27px 10px 27px;
+}*/
+
+.toggle-all + label:before {
+	content: '❯';
+  border: 1px solid blue;
+  /*background-color: purple;*/
+	font-size: 22px;
+	color: #e6e6e6;
+	padding: 10px 27px 10px 27px;
+}
+
+.toggle-all:checked + label:before {
+	color: #737373;
+}
+
+</style>
+</head>
+<body>
+  <form class="top">
+  <input class="toggle-all" type="checkbox"/>
+  <label></label>
+  </form>
+</body>
+</html>

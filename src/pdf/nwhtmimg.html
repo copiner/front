@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Long HTML to PDF Stream</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <div id="content-to-export">
+        <!-- 这里放置长网页内容 -->
+        <h1>长网页内容示例</h1>
+        <p>这是一段很长的文本，用于模拟长网页内容。</p>
+        <p>重复一些文本，让内容变得更长。</p>
+		
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		
+		
+				<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		
+		
+				<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>iiiiiiiiiiiiii</p>
+		
+        <!-- 可以添加更多内容 -->
+    </div>
+    <button id="convert-button">转换为 PDF 文件流</button>
+    <script>
+        // 后续 JavaScript 代码
+		// 获取要转换的内容元素和按钮元素
+const contentToExport = document.getElementById('content-to-export');
+const convertButton = document.getElementById('convert-button');
+
+// 为按钮添加点击事件监听器
+convertButton.addEventListener('click', async () => {
+    try {
+        // 使用 html2canvas 将内容转换为 canvas
+        const canvas = await html2canvas(contentToExport);
+      
+        // 将 canvas 转换为 data URL
+        const dataURL = canvas.toDataURL('image/png');
+
+        // 创建一个 <a> 元素用于下载图片
+        const downloadLink = document.createElement('a');
+        downloadLink.href = dataURL;
+        downloadLink.download = 'webpage_image.png';
+
+        // 模拟点击下载链接
+        downloadLink.click();
+
+
+    } catch (error) {
+        console.error('转换过程中出现错误:', error);
+    }
+});
+
+    </script>
+</body>
+
+</html>

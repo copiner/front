@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Long HTML to PDF Stream</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <div id="content-to-export">
+        <!-- 这里放置长网页内容 -->
+        <h1>长网页内容示例</h1>
+        <p>111111111111111111。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>		
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>22222222222222222。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>3333333333333333333333。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>		
+		
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>444444444444444444444444444。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>		
+		
+		<p>555555555555555555555555555555。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		
+		<p>666666666666666666666666。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>7777777777777777777777777777777</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>		
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>8888888888888888888888888888888</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>		
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>		
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>9999999999999999999999999999999</p>
+		
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>		
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>00000000000000000000000000000000</p>
+        <!-- 可以添加更多内容 -->
+    </div>
+    <button onclick="saveAsPDF()">保存为整个网页PDF</button>
+	<button id="convert-button">保存为PDF</button>
+    <script>
+        // 后续 JavaScript 代码
+		// 获取要转换的内容元素和按钮元素
+const contentToExport = document.getElementById('content-to-export');
+const convertButton = document.getElementById('convert-button');
+
+// 为按钮添加点击事件监听器
+convertButton.addEventListener('click', async () => {
+    try {
+        // 使用 html2canvas 将内容转换为 canvas
+        const canvas = await html2canvas(contentToExport);
+      
+        // 将 canvas 转换为 data URL
+        const dataURL = canvas.toDataURL('image/png');
+
+        // 创建一个 <a> 元素用于下载图片
+        const downloadLink = document.createElement('a');
+        downloadLink.href = dataURL;
+        downloadLink.download = 'webpage_image.png';
+
+        // 模拟点击下载链接
+        downloadLink.click();
+
+
+    } catch (error) {
+        console.error('转换过程中出现错误:', error);
+    }
+});
+async function saveAsPDF() {
+  const element = document.documentElement; // 整个网页
+  const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+  const pageWidth = pdf.internal.pageSize.getWidth();
+  const pageHeight = pdf.internal.pageSize.getHeight();
+  
+  // 递归截取并添加页面
+  let position = 0;
+  while (position < element.scrollHeight) {
+    const canvas = await html2canvas(element, {
+      scrollY: -position,   // 滚动位置
+      windowHeight: pageHeight * 3, // 视口高度（根据DPI调整）
+      useCORS: true,        // 处理跨域图片
+      scale: 2              // 提高分辨率（2倍）
+    });
+    
+    const imgData = canvas.toDataURL('image/jpeg', 0.92);
+    if (position > 0) pdf.addPage();
+    pdf.addImage(imgData, 'JPEG', 0, 0, pageWidth, pageHeight);
+    
+    position += pageHeight * 3; // 滚动步长（与windowHeight匹配）
+  }
+  
+  //pdf.save('webpage.pdf');
+}
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>全屏PDF展示</title>
+  <style>
+    /* 全屏容器样式 */
+    #pdf-container {
+      width: 100vw;
+      min-height: 100vh;
+      background: #ffffff;  /* 背景色 */
+      padding: 20px 0;      /* 上下边距 */
+      box-sizing: border-box;
+      overflow-y: auto;    /* 允许垂直滚动 */
+    }
+
+    /* 单页PDF样式 */
+    .pdf-page {
+      width: 100%;           /* 页面宽度 */
+      max-width: 1280px;    /* 最大宽度限制 */
+      margin: 20px auto;    /* 居中 + 页间距 */
+      /*box-shadow: 0 2px 10px rgba(0,0,0,0.1);*/ /* 阴影效果 */
+      background: #ffffff;    /* 页面背景 */
+	  font-size:36px;
+    }
+
+    /* 隐藏默认文本图层（可选） */
+    .textLayer {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div id="pdf-container"></div>
+<div>同意<div>
+<script src="pdf.min.js"></script>
+<script src="pdf.worker.min.js"></script>
+
+<script>
+// PDF配置和渲染代码
+const container = document.getElementById('pdf-container');
+const url = 'http://storage.xuetangx.com/public_assets/xuetangx/PDF/PlayerAPI_v1.0.6.pdf';
+
+// 1. 加载PDF
+pdfjsLib.getDocument(url).promise.then(pdf => {
+  // 遍历所有页面
+  for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+    pdf.getPage(pageNum).then(page => {
+      // 创建页面容器
+      const pageDiv = document.createElement('div');
+      pageDiv.className = 'pdf-page';
+      container.appendChild(pageDiv);
+
+      // 计算自适应缩放比例
+      const viewport = page.getViewport({ scale: 1 });
+      const targetWidth = pageDiv.clientWidth - 20; // 预留边距
+      const scale = targetWidth / viewport.width;
+
+      // 更新视口并创建Canvas
+      const scaledViewport = page.getViewport({ scale });
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      canvas.height = scaledViewport.height;
+      canvas.width = scaledViewport.width;
+
+      // 渲染到Canvas
+      page.render({
+        canvasContext: context,
+        viewport: scaledViewport
+      });
+
+      pageDiv.appendChild(canvas);
+    });
+  }
+});
+
+
+</script>
+</body>
+</html>

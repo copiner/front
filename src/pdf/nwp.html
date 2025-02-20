@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Long Web Content to PDF</title>
+    <!-- 引入 html2canvas 库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- 引入 jspdf 库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <!-- 要转换为 PDF 的长网页部分内容 -->
+    <div id="long-content">
+		<div>1111111111111111111111111111111，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。</div>
+		<div>2222222222222222222222222222。</div>
+		<div>这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。</div>
+		<div>333333333333333333333333333333。</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。</div>
+		<div>44444444444444444444444444444444。</div>
+		<div>这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>		
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。</div>
+		<div>555555555555555555555555555555555。</div>
+		<div>这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。</div>
+		<div>66666666666666666666。</div>
+		<div>这是一段很长的文本，用于模拟长网页内容。</div>
+		<div>这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。</div>
+		<div>7777777777777777777777777777。</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。</div>
+		<div>这是一段很长的文本，用于模拟长网页内容。</div>
+		<div>88888888888888888888888888888888，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>用于模拟长网页内容。这是一段很长的文本，</div>
+		<div>999999999999999。</div>
+        <!-- 可以添加更多内容 -->
+    </div>
+    <button id="convert-button">转换为 PDF</button>
+
+    <script>
+        // 后续的 JavaScript 代码将放在这里
+		// 获取要转换的内容元素和按钮元素
+const contentToExport = document.getElementById('long-content');
+const convertButton = document.getElementById('convert-button');
+
+// 为按钮添加点击事件监听器
+convertButton.addEventListener('click', async () => {
+    try {
+        // 使用 html2canvas 将内容转换为 canvas
+        const canvas = await html2canvas(contentToExport);
+
+        // 获取 canvas 的宽度和高度
+        const contentWidth = canvas.width;
+        const contentHeight = canvas.height;
+		console.log(contentWidth, contentHeight);
+        // A4 纸尺寸（单位：毫米）
+        const pdfWidth = 210;
+        const pdfHeight = 297;
+
+        // 计算内容在 PDF 中的缩放比例
+        const scale = pdfWidth / contentWidth;
+		
+		console.log("scale",scale)
+
+        // 计算内容在 PDF 中的总高度
+        const pdfContentHeight = contentHeight * scale;
+		
+		console.log("pdfContentHeight",pdfContentHeight)
+
+        // 创建 jspdf 实例
+        const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+
+		const ctx = canvas.getContext('2d',{ willReadFrequently: true });
+		
+		// 分页处理
+        let currentPage = 0;
+        let currentY = 0;
+        while (currentY < pdfContentHeight) {
+            if (currentPage > 0) {
+                pdf.addPage();
+            }
+            const pageHeight = Math.min(pdfHeight, pdfContentHeight - currentY);
+			console.log('pageHeight',pageHeight)
+            pdf.addImage(ctx.getImageData(0, currentPage*(pdfHeight/scale), canvas.width, pdfHeight/scale), 'PNG', 0, 0, pdfWidth, pdfHeight);
+            currentY += pdfHeight;
+            currentPage++;
+        }
+
+		
+		//pdf.addImage(ctx.getImageData(0, 0, canvas.width, 300), 'PNG', 0, 0, pdfWidth, 200);
+		//pdf.addPage();
+		//pdf.addImage(ctx.getImageData(0, 300, canvas.width, 300), 'PNG', 0, 0, pdfWidth, 200);
+		//pdf.addPage();
+		//pdf.addImage(ctx.getImageData(0, 600, canvas.width, 300), 'PNG', 0, 0, pdfWidth, 200);
+		
+        // 保存 PDF 文件
+        pdf.save('long_content.pdf');
+    } catch (error) {
+        console.error('转换过程中出现错误:', error);
+    }
+});
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+　　<meta charset="UTF-8">
+　　<title>网页HTML存本地</title>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+　　<a href="javascript:void(0)">保存文件</a>
+	<p>测测测试生产</p>
+	<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+		<p>重复一些文本，让内容变得更长。</p>
+　　<script>
+
+		var tty = document.querySelector('p');
+		tty.textContent = "54565654";
+		console.log(tty)
+		
+		
+　　　　function fake_click(obj) {
+　　　　　　var ev = document.createEvent("MouseEvents");
+　　　　　　ev.initMouseEvent(
+　　　　　　　　"click", true, false, window, 0, 0, 0, 0, 0
+　　　　　　　　, false, false, false, false, 0, null
+　　　　　　);
+　　　　　　obj.dispatchEvent(ev);
+　　　　}
+
+　　　　function export_raw(name, data) {
+　　　　　　var urlObject = window.URL || window.webkitURL || window;
+
+　　　　　　var export_blob = new Blob([data]);
+
+		
+　　　　　　var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+　　　　　　save_link.href = urlObject.createObjectURL(export_blob);
+　　　　　　save_link.download = name;
+　　　　　　fake_click(save_link);
+
+			return;
+
+			// 创建 FormData 对象
+            //const formData = new FormData();
+            // 将 Blob 添加到 FormData 中，并指定文件名
+            //formData.append('file', blob, 'example.txt');
+			
+			 //const response = await fetch('your_backend_url', {
+			//	method: 'POST',
+			//	body: formData
+			//});
+				
+　　　　}
+　　　　
+
+　　　
+　　　　$('a').click(function() {
+
+			
+			// 获取所有 script 标签
+			var scripts = document.getElementsByTagName('script');
+			 
+			// 假设你要移除第一个 script 标签
+			if (scripts.length > 1) {
+				scripts[1].parentNode.removeChild(scripts[1]);
+			}
+			
+
+			
+			var test=document.getElementsByTagName('html')[0].outerHTML;
+
+　　　　　　export_raw('test.html', test);
+　　　　});
+　　</script>
+</body>
+</html>
