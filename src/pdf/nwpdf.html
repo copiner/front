@@ -4,142 +4,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convert Long HTML to PDF Stream</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <title>HTML to PDF</title>
+    <script src="./html2canvas.min.js"></script>
+    <script src="./jspdf.umd.min.js"></script>
+	<style>
+		/* 这里可以预先设置网页字体大小 */
+		body {
+			font-size: 14px;
+		}
+		p{
+			font-size: 14px;
+			line-height: 15px;
+			padding: 6px;
+			margin: 0;
+		}
+		.second-page,
+		.first-page,
+		.third-page{
+			text-align: center;
+			font-size: 14px;
+			border: 1px solid gray;
+			padding: 50px 12px;
+		}
+	</style>
 </head>
-
 <body>
-    <div id="content-to-export">
-        <!-- 这里放置长网页内容 -->
-        <h1>长网页内容示例</h1>
-        <p>111111111111111111。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>		
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>22222222222222222。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>3333333333333333333333。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>		
-		
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>444444444444444444444444444。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>		
-		
-		<p>555555555555555555555555555555。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		
-		<p>666666666666666666666666。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>7777777777777777777777777777777</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>		
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>8888888888888888888888888888888</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>		
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>		
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>9999999999999999999999999999999</p>
-		
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>		
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>重复一些文本，让内容变得更长。</p>
-		<p>00000000000000000000000000000000</p>
-        <!-- 可以添加更多内容 -->
-    </div>
-    <button onclick="saveAsPDF()">保存为整个网页PDF</button>
-	<button id="convert-button">保存为PDF</button>
-    <script>
-        // 后续 JavaScript 代码
-		// 获取要转换的内容元素和按钮元素
-const contentToExport = document.getElementById('content-to-export');
-const convertButton = document.getElementById('convert-button');
+<button onclick="allAsPDF()">保存为PDF</button>
+<div class="first-page" id="firstPage">
+	<!-- 这里放置长网页内容 -->
+	<div style="text-align: right;height: 50px;line-height: 50px;">协议编号：<u>186559963356599</u></div>
+	<div style="text-align: center;height: 500px; margin-top: 268px;padding: 0 12px;font-size: 28px;font-weight: bold;">
+		<div>杭州市民卡支付有限公司</div>
+		<div>新快捷支付服务协议</div>
+	</div>
+	<div  style="text-align: center;height: 36px;padding: 0 12px;font-size: 28px;font-weight: bold;">
+		<div><u>2025</u>年 <u>01</u>月</div>
+	</div>
+	<!-- 可以添加更多内容 -->
+</div>
+<div class="second-page" id="secondPage">
+	<p style="margin: 20px;">111111111111111111。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>22222222222222222。</p>
+	<p>pdf。</p>
+	<p>鉴于： 为促进双方业务发展，甲乙双方本着自愿、平等、公平、互惠互利、互相支持的原则，经充分友好协商，就甲方向乙方提供新快捷支付服务所涉相关事宜达成一致意见，双方承诺共同严格遵守和履行本协议中的各项条款。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>3333333333333333333333。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
 
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>444444444444444444444444444。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+
+	<p>555555555555555555555555555555。</p>
+	<p style="background-color: yellow;">重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+
+	<p>666666666666666666666666。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>7777777777777777777777777777777</p>
+</div>
+
+<div class="third-page" id="thirdPage">
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>8888888888888888888888888888888</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>9999999999999999999999999999999</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<p>重复一些文本，让内容变得更长。</p>
+	<div style="text-align: left;padding-left: 26px;line-height: 28px;">
+		<div>乙方账户信息：</div>
+		<div>开户名称：<u>89898999999999999</u></div>
+		<div>开户银行：<u>89898999999999999</u></div>
+		<div>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<u>89898999999999999</u></div>
+	</div>
+	<p>00000000000000000000000000000000</p>
+</div>
+
+<script>
+// 后续 JavaScript 代码
+// 获取要转换的内容元素和按钮元素
+
+async function firstPng(){
+	const contentToExport = document.getElementById('content-to-export');
+	const convertButton = document.getElementById('convert-button');
+
+	console.log(window.devicePixelRatio)
 // 为按钮添加点击事件监听器
-convertButton.addEventListener('click', async () => {
-    try {
-        // 使用 html2canvas 将内容转换为 canvas
-        const canvas = await html2canvas(contentToExport);
-      
-        // 将 canvas 转换为 data URL
-        const dataURL = canvas.toDataURL('image/png');
-
-        // 创建一个 <a> 元素用于下载图片
-        const downloadLink = document.createElement('a');
-        downloadLink.href = dataURL;
-        downloadLink.download = 'webpage_image.png';
-
-        // 模拟点击下载链接
-        downloadLink.click();
+	convertButton.addEventListener('click', async () => {
+		try {
+			// 使用 html2canvas 将内容转换为 canvas
+			const canvas = await html2canvas(contentToExport);
 
 
-    } catch (error) {
-        console.error('转换过程中出现错误:', error);
-    }
-});
+			// 将 canvas 转换为 data URL
+			const dataURL = canvas.toDataURL('image/png');
+
+			// 创建一个 <a> 元素用于下载图片
+			const downloadLink = document.createElement('a');
+			downloadLink.href = dataURL;
+			downloadLink.download = 'webpage_image.png';
+
+			// 模拟点击下载链接
+			downloadLink.click();
+
+
+		} catch (error) {
+			console.error('转换过程中出现错误:', error);
+		}
+	});
+}
+
+
+
 async function saveAsPDF() {
-  const element = document.documentElement; // 整个网页
+  const element = document.getElementById('content-to-export'); // 整个网页
   const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
   const pageWidth = pdf.internal.pageSize.getWidth();
   const pageHeight = pdf.internal.pageSize.getHeight();
-  
+	console.log(pageWidth, pageHeight)
+
+	console.log("height", element.scrollHeight)
   // 递归截取并添加页面
   let position = 0;
   while (position < element.scrollHeight) {
-    const canvas = await html2canvas(element, {
-      scrollY: -position,   // 滚动位置
-      windowHeight: pageHeight * 3, // 视口高度（根据DPI调整）
-      useCORS: true,        // 处理跨域图片
-      scale: 2              // 提高分辨率（2倍）
-    });
-    
-    const imgData = canvas.toDataURL('image/jpeg', 0.92);
-    if (position > 0) pdf.addPage();
-    pdf.addImage(imgData, 'JPEG', 0, 0, pageWidth, pageHeight);
-    
-    position += pageHeight * 3; // 滚动步长（与windowHeight匹配）
+	const canvas = await html2canvas(element, {
+	  scrollY: -position,   // 滚动位置
+	  windowHeight: pageHeight * 3, // 视口高度（根据DPI调整）
+	  useCORS: false,        // 处理跨域图片
+	  //scale: 2              // 提高分辨率（2倍）
+	  scale: window.devicePixelRatio
+	});
+
+	console.log(position)
+
+	const imgData = canvas.toDataURL('image/png', 0.92);
+	if (position > 0) pdf.addPage();
+	pdf.addImage(imgData, 'PNG', 0, 0, pageWidth, pageHeight);
+
+	position += pageHeight * 3; // 滚动步长（与windowHeight匹配）
   }
-  
-  //pdf.save('webpage.pdf');
+
+  pdf.save('webpage.pdf');
+}
+async function allAsPDF(){
+
+	const firstPage = document.getElementById('firstPage');
+	const secondPage = document.getElementById('secondPage');
+	const thirdPage = document.getElementById('thirdPage');
+
+	try {
+
+		const pdf = new jspdf.jsPDF('p', 'mm', 'a4',true);
+		const pdfWidth = pdf.internal.pageSize.getWidth();
+		const pdfHeight = pdf.internal.pageSize.getHeight();
+
+		// 使用 html2canvas 将内容转换为 canvas
+		const firstPageCanvas = await html2canvas(firstPage,{
+			scale: window.devicePixelRatio
+		});
+		const secondPageCanvas = await html2canvas(secondPage,{
+			scale: window.devicePixelRatio
+		});
+		const thirdPageCanvas = await html2canvas(thirdPage,{
+			scale: window.devicePixelRatio
+		});
+		// 将 canvas 内容添加到 PDF 中
+		pdf.addImage(firstPageCanvas.toDataURL('image/png'), 'PNG', 0, 0, pdfWidth, pdfHeight);
+		// pdf增加一页
+		pdf.addPage();
+
+		pdf.addImage(secondPageCanvas.toDataURL('image/png'), 'PNG', 0, 0, pdfWidth, pdfHeight);
+		pdf.addPage();
+
+		pdf.addImage(thirdPageCanvas.toDataURL('image/png'), 'PNG', 0, 0, pdfWidth, pdfHeight);
+
+		pdf.save('webpage.pdf');
+
+	} catch (error) {
+		console.error('转换过程中出现错误:', error);
+	}
+
 }
 
-    </script>
+
+</script>
 </body>
 
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Canvas 分段截取 - getImageData</title>
+</head>
+
+<body>
+<canvas id="originalCanvas" width="400" height="300"></canvas>
+<div id="output"></div>
+
+<script>
+	// 获取原始 canvas 及其上下文
+	const originalCanvas = document.getElementById('originalCanvas');
+	const ctx = originalCanvas.getContext('2d');
+
+	// 在原始 canvas 上绘制一些内容，这里简单绘制一个矩形
+	ctx.fillStyle = 'blue';
+	ctx.fillRect(50, 50, 300, 200);
+
+	// 定义分段数量
+	const numSegments = 3;
+	const segmentHeight = originalCanvas.height / numSegments;
+
+	// 获取输出容器
+	const outputDiv = document.getElementById('output');
+
+	for (let i = 0; i < numSegments; i++) {
+		const startY = i * segmentHeight;
+		// 创建新的 canvas 用于存放分段内容
+		const segmentCanvas = document.createElement('canvas');
+		const segmentCtx = segmentCanvas.getContext('2d');
+		segmentCanvas.width = originalCanvas.width;
+		segmentCanvas.height = segmentHeight;
+
+		// 获取原始 canvas 上指定区域的像素数据
+		const imageData = ctx.getImageData(0, startY, originalCanvas.width, segmentHeight);
+		// 将像素数据绘制到新的 canvas 上
+		segmentCtx.putImageData(imageData, 0, 0);
+
+		// 将分段 canvas 添加到输出容器中
+		outputDiv.appendChild(segmentCanvas);
+	}
+</script>
+</body>
+
+</html>
